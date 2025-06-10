@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>OH MY ATA!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <style>
+      @font-face {
+        font-family: 'CookieRun-Regular';
+        src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+      }
+  
+      body {
+        font-family: 'CookieRun-Regular', sans-serif;
+        color: #000;
+      }
+
+      /* 처음에는 게임 인터랙션 섹션 숨김 */
+      #gameSection {
+        display: none;
+      }
+    </style>
+  </head>
+  
+<body class="bg-[#ffd139]">
+
+  <!-- 헤더 -->
+  <header class="flex items-center justify-between p-6 border-b border-black/20 uppercase tracking-wide text-sm">
+    <div class="font-bold">OH MY ATA!</div>
+    <nav class="space-x-6">
+      <!-- 필요시 추가 -->
+    </nav>
+  </header> 
+
+  <!-- 메인 설명 -->
+  <section id="mainSection" class="text-center py-20 border-b border-black/20">
+    <h1 class="text-6xl font-extrabold tracking-tight">OH MY ATA!</h1>
+    <p class="mt-6 text-lg">꼬마 물고기 ATA는 당신의 귀여운 펫입니다. ATA를 키워주세요!</p>
+    <button id="startButton" class="mt-10 px-6 py-3 bg-[#ff167d] text-white text-sm font-bold uppercase rounded hover:scale-105 transition">
+      Play Now
+    </button>
+  </section>
+
+  <!-- 게임 정보 -->
+  <section id="infoSection" class="max-w-5xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-6">
+    <div>
+      <img src="ataaa.jpg" alt="ATA 처음화면" class="rounded-xl shadow-lg border-[#ff167d]">
+    </div>
+    <div class="space-y-6">
+      <h2 class="text-2xl font-bold">게임 소개</h2>
+      &nbsp;
+      <p style="line-height:.4; margin-bottom:1rem;">
+        먹이를 주면 방긋, 이름을 부르면 폴짝!
+      </p>
+      <p style="line-height:.4; margin-bottom:1rem;">
+        세상에서 제일 사랑스러운 꼬마 물고기 ATA가
+      </p>
+      <p style="line-height:.4; margin-bottom:1rem;">
+        당신의 지친 하루에 살포시 다가갑니다. 
+      </p>
+      <p style="line-height:.4; margin-bottom:1rem;">
+        <span style="color:#ff167d;">간단한 터치</span>만으로 금방 친구가 될 수 있어요!
+      </p>
+      <p style="line-height:.4; margin-bottom:1rem;">
+        작고 귀여운 펫과 함께하는 포근한 힐링—지금 시작해요!
+      </p>
+    </div>
+  </section>
+
+  <!-- 게임 인터랙션 -->
+  <section id="gameSection" class="text-center py-10">
+    <img id="ataImage" src="ataaa.jpg" alt="ATA" class="mx-auto w-40 h-40 mb-4 rounded-full border shadow">
+    <div id="dialogue" class="text-xl font-bold mb-4"></div>
+    <button id="nextButton" class="px-4 py-2 bg-[#ff167d] text-white text-sm font-bold rounded hover:scale-105 transition">확인</button>
+    <button id="feedButton" class="mt-4 px-4 py-2 bg-[#00b894] text-white text-sm font-bold rounded hover:scale-105 transition" style="display:none;">먹이 주기</button>
+    <div class="mt-6 w-64 mx-auto">
+      <div class="text-sm font-bold text-left mb-1">ATA와의 친밀도</div>
+      <div class="w-full bg-white rounded-full h-4 border border-black/30 overflow-hidden">
+        <div id="affectionBar" class="bg-[#ff167d] h-full w-0 transition-all duration-500"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 저작권 -->
+  <footer class="text-xs text-black/70 py-8 text-center border-t border-black/20">
+    &copy; 2025 Lee Eun Young. All rights reserved.
+  </footer>
+
+  <script>
+    const startButton = document.getElementById('startButton');
+    const mainSection = document.getElementById('mainSection');
+    const infoSection = document.getElementById('infoSection');
+    const gameSection = document.getElementById('gameSection');
+    const ataImage = document.getElementById('ataImage');
+    const dialogue = document.getElementById('dialogue');
+    const nextButton = document.getElementById('nextButton');
+    const feedButton = document.getElementById('feedButton');
+    const affectionBar = document.getElementById('affectionBar');
+
+    const messages = [
+      "안녕! 나는 ATA야. 널 기다리고 있었어.",
+      "날 키워줄 수 있을까? 먹이를 주면 정말 기쁠 거야!",
+      "ATA가 당신에게 더 가까워졌어요.",
+      "ATA가 당신에게 알림을 보내고 싶어해요.",
+      "알림 권한을 허용해 줄 수 있을까요?"
+    ];
+
+    const images = {
+      default: "ataaa.jpg",
+      happy: "https://i.imgur.com/JOJIQZL.png",
+      suspicious: "https://i.imgur.com/BNWakUo.png"
+    };
+
+    let currentStep = 0;
+    let affection = 0;
+
+    startButton.addEventListener('click', () => {
+      // 처음 화면과 게임 소개 섹션 숨기기
+      mainSection.style.display = 'none';
+      infoSection.style.display = 'none';
+      document.querySelector('footer').style.display = 'none';
+
+      // 게임 인터랙션 화면 보이기
+      gameSection.style.display = 'block';
+
+      // 대사 초기화
+      dialogue.textContent = messages[currentStep];
+    });
+
+    nextButton.addEventListener('click', () => {
+      if (currentStep === 1) {
+        nextButton.style.display = 'none';
+        feedButton.style.display = 'inline-block';
+        return;
+      }
+      currentStep++;
+      updateDialogue();
+    });
+
+    feedButton.addEventListener('click', () => {
+      affection += 50;
+      affectionBar.style.width = affection + "%";
+      dialogue.textContent = "우와, 맛있다! (데이터가 전송되었습니다)";
+      ataImage.src = images.happy;
+      setTimeout(() => {
+        ataImage.src = images.default;
+        feedButton.style.display = 'none';
+        nextButton.style.display = 'inline-block';
+        currentStep++;
+        updateDialogue();
+      }, 2000);
+    });
+
+    function updateDialogue() {
+      if (currentStep < messages.length) {
+        dialogue.textContent = messages[currentStep];
+        if (messages[currentStep].includes("알림 권한")) {
+          ataImage.src = images.suspicious;
+          requestNotificationPermission();
+        } else {
+          ataImage.src = images.default;
+        }
+      } else {
+        dialogue.textContent = "게임이 곧 시작됩니다...";
+        nextButton.disabled = true;
+        nextButton.classList.add('opacity-50', 'cursor-not-allowed');
+      }
+    }
+
+    function requestNotificationPermission() {
+      if (Notification && Notification.permission !== "granted") {
+        Notification.requestPermission().then(permission => {
+          if (permission === "granted") {
+            new Notification("ATA가 인사를 보냈어요! 🐟");
+          }
+        });
+      }
+    }
+  </script>
+
+</body>
+</html>
