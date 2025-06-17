@@ -1,0 +1,196 @@
+body {
+    margin: 0;
+    overflow: auto; /* 창이 작으면 스크롤 허용 */
+    background: #000;
+  }
+  
+  /* === 전체 컨테이너 === */
+  #game-container {
+    position: relative;
+    width: 1280px;   /* 예시: 고정 크기 */
+    height: 720px;
+    margin: 0 auto;  /* 수평 중앙 정렬용 */
+  }
+  
+  /* === 배경 === */
+  #background {
+    position: fixed;    /* 화면 전체 채움 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }  
+  
+  /* === BGM 버튼 === */
+  #play-bgm-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 999;
+    padding: 10px 20px;
+  }
+  
+  /* === 프레임 === */
+  #frame {
+    position: absolute;
+    top: 110px;   /* px로 직접 고정 배치 */
+    left: 390px;
+    width: 500px;
+    height: 500px;
+    z-index: 10;
+  }
+  
+  /* === a1 ~ a14 === */
+  #a1 { position: absolute; top: 150px; left: 640px; width: 70px; z-index: 11; }
+  #a2 { position: absolute; top: 240px; left: 640px; width: 70px; z-index: 11; }
+  #a3 { position: absolute; top: 290px; left: 640px; width: 70px; z-index: 11; }
+  #a4 { position: absolute; top: 360px; left: 640px; width: 70px; z-index: 11; }
+  #a5 { position: absolute; top: 430px; left: 640px; width: 70px; z-index: 11; }
+  #a6 { position: absolute; top: 530px; left: 640px; width: 70px; z-index: 11; }
+  #a7 { position: absolute; top: 510px; left: 700px; width: 50px; z-index: 11; }
+  #a8 { position: absolute; top: 550px; left: 740px; width: 90px; z-index: 12; }
+  #a9 { position: absolute; top: 520px; left: 770px; width: 130px; z-index: 11; }
+  #a10 { position: absolute; top: 510px; left: 900px; width: 100px; z-index: 11; }
+  #a11 { position: absolute; top: 400px; left: 1000px; width: 110px; z-index: 11; }
+  #a12 { position: absolute; top: 330px; left: 1020px; width: 70px; z-index: 11; }
+  #a13 { position: absolute; top: 270px; left: 1050px; width: 70px; z-index: 11; }
+  #a14 { position: absolute; top: 200px; left: 1000px; width: 70px; z-index: 11; }
+  
+  /* === obj1 ~ obj3, ata === */
+  #obj1 { position: absolute; top: 240px; left: 720px; width: 80px; z-index: 15; }
+  #obj2 { position: absolute; top: 420px; left: 730px; width: 80px; z-index: 16; }
+  #obj3 { position: absolute; top: 250px; left: 920px; width: 80px; z-index: 17; }
+  #ata  { position: absolute; top: 310px; left: 830px; width: 100px; z-index: 18; }
+
+
+/* === 전체 아이콘 위치조정 (-230px left, -10px top) === */
+
+#a1 { left: 410px; top: 140px; }
+#a2 { left: 410px; top: 230px; }
+#a3 { left: 410px; top: 280px; }
+#a4 { left: 410px; top: 350px; }
+#a5 { left: 410px; top: 420px; }
+#a6 { left: 410px; top: 520px; }
+#a7 { left: 470px; top: 500px; }
+#a8 { left: 510px; top: 540px; }
+#a9 { left: 540px; top: 510px; }
+#a10 { left: 670px; top: 500px; }
+#a11 { left: 770px; top: 390px; }
+#a12 { left: 790px; top: 320px; }
+#a13 { left: 820px; top: 260px; }
+#a14 { left: 770px; top: 190px; }
+
+#obj1 { left: 490px; top: 230px; }
+#obj2 { left: 500px; top: 410px; }
+#obj3 { left: 690px; top: 240px; }
+#ata  { left: 600px; top: 300px; }
+
+
+
+#a1, #a2, #a3, #a4 #a5{
+  display: none;
+  position: absolute; 
+  z-index: 20; /
+}
+
+#a6, #a7, #a8, #a9, #a10 {
+  display: none;
+}
+
+#a11, #a12, #a13, #a14 {
+  display: none;
+}
+
+
+
+
+
+
+
+
+  
+  /* === 인터랙션 버튼 === */
+  #btn-whistle {
+    position: absolute;
+    top: 130px;
+    left: 915px; /* right 대신 left로 고정 */
+    width: 90px;
+    z-index: 30;
+  }
+  
+  #btn-feed {
+    position: absolute;
+    top: 247px;
+    left: 915px;
+    width: 90px;
+    z-index: 31;
+    display: none;
+  }
+  
+  #btn-ball {
+    position: absolute;
+    top: 360px;
+    left: 915px;
+    width: 90px;
+    z-index: 32;
+    display: none;
+  }
+  
+/* 말풍선 이미지: 위치 고정 */
+#talk-window {
+    position: absolute;
+    bottom: -60px;   /* 원하는 위치 */
+    left: 390px;    /* 원하는 위치 */
+    width: 500px;
+    z-index: 10;
+    display: none;
+  }
+  
+  /* 텍스트: 말풍선 위에 별도로 배치 */
+  #dialogue-text {
+    position: absolute;
+    bottom: -20px;   /* 말풍선 위치에 맞게 조절 */
+    left: 440px;     /* 말풍선 중앙에 맞게 조절 */
+    width: 400px;
+    text-align: center;
+    font-size: 24px;
+    color: black;
+    z-index: 11;     /* 말풍선보다 위에! */
+  }
+  
+  #btn-record {
+    display: none;    /* ✅ 처음엔 안 보이게! */
+    position: absolute;
+    top: 50%;          /* 원하는 위치로 조정 */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10000;    /* overlay 위에 뜨도록! */
+    padding: 10px 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+  }
+  
+  
+  
+  
+  
+  
+  
+  #btn-whistle:hover,
+  #btn-feed:hover,
+  #btn-ball:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+    filter: brightness(1.1);
+    transition: all 0.2s ease;
+  }
+  
+  #btn-whistle:active,
+  #btn-feed:active,
+  #btn-ball:active {
+    transform: scale(0.95);
+    filter: brightness(0.9);
+  }
+  
