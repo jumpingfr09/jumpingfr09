@@ -10,79 +10,72 @@
 
   <!-- BGM 버튼 -->
   <button id="play-bgm-button">🎵 음악 재생</button>
-  <audio id="bgm" src="assets/ata_bgm.mp3" loop></audio>
-  <audio id="whistle-sound" src="assets/whistle_sound.wav"></audio>
-  <audio id="feed-sound" src="assets/feed_sound.wav"></audio>
-  <audio id="ball-sound" src="assets/ball_sound.wav"></audio>
+  <audio id="bgm" src="ata_bgm.mp3" loop></audio>
+  <audio id="whistle-sound" src="whistle_sound.wav"></audio>
+  <audio id="feed-sound" src="feed_sound.wav"></audio>
+  <audio id="ball-sound" src="ball_sound.wav"></audio>
 
   <!-- 게임 컨테이너 -->
   <div id="game-container">
 
     <!-- ATA 이미지 -->
-    <img src="assets/ata.gif" id="ata">
+    <img src="ata.gif" id="ata">
 
     <!-- 배경 -->
-    <img src="assets/background.gif" id="background">
-
+    <img src="background.gif" id="background">
 
     <!-- 프레임 컨테이너 -->
     <div id="frame-container">
-      <img src="assets/frame.png" id="frame">
+      <img src="frame.png" id="frame">
 
       <!-- 프레임 안 요소 -->
-      <img src="assets/obj1gif.gif" id="obj1">
-      <img src="assets/obj2.gif" id="obj2">
-      <img src="assets/obj3gif.gif" id="obj3">
-      <img src="assets/ata.gif" class="ata-inside-frame">
+      <img src="obj1gif.gif" id="obj1">
+      <img src="obj2.gif" id="obj2">
+      <img src="obj3gif.gif" id="obj3">
+      <img src="ata.gif" class="ata-inside-frame">
     </div>
 
     <!-- 프레임 위 요소 -->
-    <img src="assets/a1.png" id="a1">
-    <img src="assets/a2.png" id="a2">
-    <img src="assets/a3.png" id="a3">
-    <img src="assets/a4.png" id="a4">
-    <img src="assets/a5.png" id="a5">
-    <img src="assets/a6.png" id="a6">
-    <img src="assets/a7.png" id="a7">
-    <img src="assets/a8.png" id="a8">
-    <img src="assets/a9.png" id="a9">
-    <img src="assets/a10.png" id="a10">
-    <img src="assets/a11.png" id="a11">
-    <img src="assets/a12.png" id="a12">
-    <img src="assets/a13.png" id="a13">
-    <img src="assets/a14.png" id="a14">
+    <img src="a1.png" id="a1">
+    <img src="a2.png" id="a2">
+    <img src="a3.png" id="a3">
+    <img src="a4.png" id="a4">
+    <img src="a5.png" id="a5">
+    <img src="a6.png" id="a6">
+    <img src="a7.png" id="a7">
+    <img src="a8.png" id="a8">
+    <img src="a9.png" id="a9">
+    <img src="a10.png" id="a10">
+    <img src="a11.png" id="a11">
+    <img src="a12.png" id="a12">
+    <img src="a13.png" id="a13">
+    <img src="a14.png" id="a14">
 
     <!-- 버튼 -->
-    <img src="assets/horuragi_btn.png" id="btn-whistle">
-    <img src="assets/eat_btn.png" id="btn-feed">
-    <img src="assets/ball_btn.png" id="btn-ball">
+    <img src="horuragi_btn.png" id="btn-whistle">
+    <img src="eat_btn.png" id="btn-feed">
+    <img src="ball_btn.png" id="btn-ball">
 
     <!-- 녹음버튼 -->
-    <button id="btn-record" style="display: none;">녹음 시작</button>
+    <button id="btn-record" style="display: none;">버튼을 누르고, "ATA"를 외쳐 주세요.</button>
 
-
-
-    <img src="assets/talk_window.png" id="talk-window">
+    <img src="talk_window.png" id="talk-window">
     <div id="dialogue-text"></div>
-
 
     <!-- 화면 잠금을 위한 오버레이 -->
     <div id="overlay-blocker" style="
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.3);
-    z-index: 9999;
-    display: none;
-"></div>
-
-</div>
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.3);
+      z-index: 9999;
+      display: none;
+    "></div>
 
   </div>
 
-    <!-- === 스크립트 순서 === -->
-    <script src="apikey.js"></script>
-    <script src="main.js"></script>
+  <!-- === 스크립트 순서 === -->
+  <script src="apikey.js"></script>
+  <script src="main.js"></script>
 
 </body>
-
-
+</html>
