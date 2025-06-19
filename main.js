@@ -223,7 +223,7 @@ const thankBallTalks = [
   "너랑 있으면 뭐든 재밌어!",
   "꼬리로 공 튕겼다!",
   "물결 따라 공이 둥둥 떠!",
-  "너랑 공놀이매일 하고 싶어!",
+  "너랑 공놀이 매일 하고 싶어!",
   "잡았다! 이번엔 내가 던질래!",
   "으아악! 공 놓쳤다! 아까워!",
   "공이..! 방금은 실수야! 다시!"
@@ -307,7 +307,7 @@ function startRandomTalkLoop() {
     } else if (intimacy < 20) {
       if (!feedBtnUnlocked) {
         showOverlay();
-        showTalk("나 알림 보내도 돼?", 3500, () => {
+        showTalk("너한테 알림 보내도 돼?", 3500, () => {
           requestNotificationPermission();
         });
         return;
@@ -325,7 +325,7 @@ function startRandomTalkLoop() {
     } else if (intimacy < 40) {
       if (!cameraPermissionRequested) {
         showOverlay();
-        showTalk("카메라 허용해줄래?", 3500, () => {
+        showTalk("나 네 얼굴이 궁금해...", 3500, () => {
           requestCameraPermission();
         });
         return;
@@ -334,7 +334,7 @@ function startRandomTalkLoop() {
     } else {
       if (!microphonePermissionRequested) {
         showOverlay();
-        showTalk("마이크도 켜 줄 수 있어?", 3500, () => {
+        showTalk("네 목소리가 듣고 싶어.", 3500, () => {
           requestMicrophonePermission();
         });
         return;
@@ -394,7 +394,7 @@ whistleBtn.addEventListener('click', () => {
 
   if (intimacy >= 10 && !feedBtnUnlocked) {
     showOverlay();
-    showTalk("나 알림 보내도 돼?", 3500, () => {
+    showTalk("너한테 알림 보내도 돼?", 3500, () => {
       requestNotificationPermission();
     });
     return;
@@ -466,7 +466,7 @@ ballBtn.addEventListener('click', () => {
 
   if (intimacy >= 30 && !cameraPermissionRequested) {
     showOverlay();
-    showTalk("카메라 허용해줄래?", 3500, () => {
+    showTalk("나 네 얼굴이 궁금해...", 3500, () => {
       requestCameraPermission();
     });
     return;
@@ -474,7 +474,7 @@ ballBtn.addEventListener('click', () => {
 
   if (intimacy >= 40 && !microphonePermissionRequested) {
     showOverlay();
-    showTalk("마이크도 켜 줄 수 있어?", 3500, () => {
+    showTalk("네 목소리가 궁금해.", 3500, () => {
       requestMicrophonePermission();
     });
     return;
@@ -642,7 +642,7 @@ function requestMicrophonePermission() {
 
         // ✅ 사용자에게 마지막 안내 대사 후 버튼
         showTalk(
-          `${userName}! 마지막으로 내 부탁 하나만 들어줄래? 네 목소리를 들려줘!`,
+          `${userName}! 네 목소리로, 내 이름을 불러줘.`,
           4000,
           () => {
             showRecordButton(stream);
